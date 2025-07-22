@@ -34,6 +34,30 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
+  .search {
+  align-self: center;
+  margin: 0 1rem;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-search input {
+  padding: 0.5rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px 0 0 4px;
+}
+
+.navbar-search button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
 }
 
 p {
