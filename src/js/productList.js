@@ -6,20 +6,20 @@ const searchTerm = params.get("search") || "";
 const dataSource = new ProductData("tents");
 
 async function loadAndRender() {
-  // 1️⃣ fetch either all products or only the matching ones
+  // 1️ fetch either all products or only the matching ones
   const products = searchTerm
     ? await dataSource.searchProducts(searchTerm)
     : await dataSource.getData();
 
   const container = qs("#productContainer");
 
-  // 2️⃣ no‐results guard
+  // 2️ no‐results guard
   if (!products || products.length === 0) {
     container.innerHTML = `<p>No products found for “${searchTerm}”.</p>`;
     return;
   }
 
-  // 3️⃣ render the grid, using the exact keys from your JSON:
+  // 3️ render the grid, using the exact keys from your JSON:
   container.innerHTML = products
     .map(p => `
       <li class="product-card">

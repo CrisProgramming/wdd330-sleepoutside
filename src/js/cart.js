@@ -1,28 +1,20 @@
-import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+import ShoppingCart from "./ShoppingCart.mjs";
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-}
+window.addEventListener("DOMContentLoaded", async () => {
+  // 1️ inject header & footer
+  await loadHeaderFooter();
 
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
+  // 2️ instantiate and render the cart
+  const cart = new ShoppingCart("so-cart");
+  await cart.render(".product-list", "../partials/cart-item.html");
 
-  return newItem;
-}
-
-renderCartContents();
+  // 3️ wire up removal buttons
+  document.querySelectorAll(".remove-item").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const idx = parseInt(e.target.dataset.index, 10);
+      cart.removeItem(idx);
+      await cart.render(".product-list", "../partials/cart-item.html");
+    });
+  });
+});
