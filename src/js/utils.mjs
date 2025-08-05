@@ -1,11 +1,22 @@
-// 1️ loadTemplate: fetches an HTML partial and returns it as text
+// 0️ URL param helper
+
+export function getParam(name) {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+
+
+// 1️ loadTemplate: fetches an HTML partial and returns it as text 
+
 export async function loadTemplate(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to load ${path}`);
   return res.text();
 }
 
+
 // 2️ renderWithTemplate: injects the HTML, then (optionally) runs a callback
+
 export function renderWithTemplate(template, parentEl, data, callback) {
   parentEl.innerHTML = template;
   if (typeof callback === "function") {
@@ -13,7 +24,9 @@ export function renderWithTemplate(template, parentEl, data, callback) {
   }
 }
 
+
 // 3️ loadHeaderFooter: loads both header.html & footer.html and renders them
+
 export async function loadHeaderFooter() {
   const [headerTpl, footerTpl] = await Promise.all([
     loadTemplate("../partials/header.html"),
