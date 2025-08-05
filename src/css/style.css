@@ -35,29 +35,29 @@ header {
   justify-content: space-between;
   padding: 0.5rem;
   .search {
-  align-self: center;
-  margin: 0 1rem;
-}
+    align-self: center;
+    margin: 0 1rem;
+  }
 
-.navbar-search {
-  display: flex;
-  align-items: center;
-}
+  .navbar-search {
+    display: flex;
+    align-items: center;
+  }
 
-.navbar-search input {
-  padding: 0.5rem;
-  border: 1px solid var(--light-grey);
-  border-radius: 4px 0 0 4px;
-}
+  .navbar-search input {
+    padding: 0.5rem;
+    border: 1px solid var(--light-grey);
+    border-radius: 4px 0 0 4px;
+  }
 
-.navbar-search button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: var(--secondary-color);
-  color: white;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-}
+  .navbar-search button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
 }
 
 p {
@@ -284,4 +284,41 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/* ————————— Quick-View Modal Styles ————————— */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 4px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-content img {
+  max-width: 100%;
+  margin-bottom: 1rem;
 }
