@@ -30,6 +30,33 @@
         </div>
       </div>
 
+<section class="newsletter divider" aria-labelledby="nl-title">
+  <h2 id="nl-title">Join our Newsletter</h2>
+  <p class="newsletter__blurb">
+    Get tips, deals, and new gear drops in your inbox. No spam. Unsubscribe anytime.
+  </p>
+
+  <form id="newsletter-form" class="newsletter__form">
+    <label for="nl-name">Name (optional)</label>
+    <input id="nl-name" name="name" type="text" autocomplete="name" />
+
+    <label for="nl-email">Email</label>
+    <input id="nl-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+
+    <label class="newsletter__consent">
+      <input id="nl-consent" name="consent" type="checkbox" required />
+      I agree to receive emails about products, offers, and updates.
+    </label>
+
+    <button type="submit">Subscribe</button>
+    <p id="nl-msg" class="newsletter__msg" aria-live="polite"></p>
+  </form>
+</section>
+
+<!-- Load the newsletter logic -->
+<script type="module" src="js/newsletter.js" defer></script>
+
+
       <!-- Category Links -->
       <section class="categories">
         <a href="product_listing/index.html?category=tents">
